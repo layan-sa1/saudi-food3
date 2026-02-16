@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* 
+  Design Philosophy: Contemporary Digital Heritage (التراث الرقمي المعاصر)
+  - Color Palette: Sandy brown (#C9A87C), Olive green (#6B8E23), Royal gold (#D4AF37)
+  - Typography: Tajawal for headings, Amiri for traditional text
+  - Layout: Asymmetric with 8-degree angles mimicking sand dunes
+  - Animation: Smooth transitions inspired by desert winds (400-600ms)
+*/
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom Saudi Heritage Colors */
+  --color-sand: #C9A87C;
+  --color-olive: #6B8E23;
+  --color-gold: #D4AF37;
+  --color-warm-cream: #FAF8F5;
+  --color-dark-brown: #3E2723;
+}
+
+:root {
+  /* Primary: Olive Green for health and growth */
+  --primary: oklch(0.52 0.12 110);
+  --primary-foreground: oklch(0.98 0.01 110);
+  
+  /* Sidebar colors */
+  --sidebar-primary: oklch(0.48 0.11 110);
+  --sidebar-primary-foreground: oklch(0.98 0.01 110);
+  
+  /* Chart colors - earthy tones */
+  --chart-1: oklch(0.72 0.08 75);
+  --chart-2: oklch(0.52 0.12 110);
+  --chart-3: oklch(0.65 0.15 55);
+  --chart-4: oklch(0.45 0.10 115);
+  --chart-5: oklch(0.35 0.08 120);
+  
+  /* Border radius - beveled edges like bedouin tents */
+  --radius: 0.75rem;
+  
+  /* Background: Warm cream */
+  --background: oklch(0.98 0.01 65);
+  --foreground: oklch(0.25 0.02 35);
+  
+  /* Card: Slightly lighter cream */
+  --card: oklch(0.99 0.005 65);
+  --card-foreground: oklch(0.25 0.02 35);
+  
+  /* Popover */
+  --popover: oklch(0.99 0.005 65);
+  --popover-foreground: oklch(0.25 0.02 35);
+  
+  /* Secondary: Sandy brown */
+  --secondary: oklch(0.75 0.06 65);
+  --secondary-foreground: oklch(0.25 0.02 35);
+  
+  /* Muted */
+  --muted: oklch(0.95 0.01 65);
+  --muted-foreground: oklch(0.50 0.02 35);
+  
+  /* Accent: Royal gold */
+  --accent: oklch(0.78 0.12 85);
+  --accent-foreground: oklch(0.25 0.02 35);
+  
+  /* Destructive */
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  
+  /* Border and Input */
+  --border: oklch(0.88 0.02 65);
+  --input: oklch(0.88 0.02 65);
+  
+  /* Ring: Olive green */
+  --ring: oklch(0.52 0.12 110);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.99 0.005 65);
+  --sidebar-foreground: oklch(0.25 0.02 35);
+  --sidebar-accent: oklch(0.95 0.01 65);
+  --sidebar-accent-foreground: oklch(0.25 0.02 35);
+  --sidebar-border: oklch(0.88 0.02 65);
+  --sidebar-ring: oklch(0.52 0.12 110);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.8;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+  }
+  
+  .font-display {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 800;
+  }
+  
+  .font-traditional {
+    font-family: 'Amiri', serif;
+    font-style: italic;
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+  
+  /* Custom beveled card style */
+  .card-beveled {
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+  
+  /* Smooth transitions inspired by desert winds */
+  .transition-desert {
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Islamic pattern background */
+  .pattern-islamic {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A87C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 124, 0.3), transparent);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
